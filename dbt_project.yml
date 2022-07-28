@@ -6,7 +6,7 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 on-run-start: '{{ fivetran_utils.empty_variable_warning("ticket_field_history_columns", "zendesk_ticket_field_history") }}'
 models:
   zendesk:
-    +schema: zendesk
+    +schema: customer_service
     +materialized: table
     agent_work_time:
       +materialized: ephemeral

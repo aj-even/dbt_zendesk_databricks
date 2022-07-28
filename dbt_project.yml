@@ -12,14 +12,14 @@ models:
       +materialized: ephemeral
     intermediate:
       +schema: zendesk_intermediate
-      +materialized: table
+      +materialized: ephemeral
     reply_times:
       +materialized: ephemeral
     resolution_times:
       +materialized: ephemeral
     sla_policy:
       +schema: zendesk_intermediate
-      +materialized: table
+      +materialized: ephemeral
     ticket_history:
       +schema: zendesk_intermediate
       +materialized: ephemeral
@@ -45,7 +45,7 @@ vars:
     user: "{{ ref('stg_zendesk__user') }}"
     daylight_time: "{{ ref('stg_zendesk__daylight_time') }}"
     time_zone: "{{ ref('stg_zendesk__time_zone') }}"
-    using_schedules: true
+    using_schedules: false
     using_domain_names: true
     using_user_tags: true
     using_ticket_form_history: true

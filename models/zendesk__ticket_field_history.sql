@@ -1,7 +1,10 @@
 {{ 
     config(
         materialized='incremental',
-        unique_key='ticket_day_id'
+        unique_key='ticket_day_id',
+        incremental_strategy='merge',
+        file_format='delta'
+        
         ) 
 }}
 

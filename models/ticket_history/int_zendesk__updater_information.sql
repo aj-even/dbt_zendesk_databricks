@@ -36,8 +36,7 @@ with users as (
         {% endif %}
     from users
 
-    left join organizations 
-        ON organizations.organization_id = users.organization_id
+    left join organizations using(organization_id)
 )
 
 select *

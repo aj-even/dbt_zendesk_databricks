@@ -23,7 +23,7 @@ with users as (
 
         ,users.last_login_at as updater_last_login_at
         ,users.time_zone as updater_time_zone
-        ,organizations.organization_id
+        ,organizations.organization_id as updater_organization_id
 
         --If you use using_domain_names tags this will be included, if not it will be ignored.
         {% if var('using_domain_names', True) %}
@@ -36,10 +36,9 @@ with users as (
         {% endif %}
     from users
 
-    left join organizations
-        using(organization_id)
+    left join organizations 
+        ON organizations.organization_id = users.organization_id
 )
 
-select *,
-       organization_id as updater_organization_id
+select *
 from final

@@ -7,24 +7,36 @@ on-run-start: '{{ fivetran_utils.empty_variable_warning("ticket_field_history_co
 models:
   zendesk:
     +schema: customer_service
+    +catalog: analytics
     +materialized: table
     +file_format: delta
     agent_work_time:
+      +schema: int_zendesk
+      +catalog: intermediate
       +materialized: ephemeral
     intermediate:
-      +schema: zendesk_intermediate
+      +schema: int_zendesk
+      +catalog: intermediate
       +materialized: ephemeral
     reply_times:
+      +schema: int_zendesk
+      +catalog: intermediate
       +materialized: ephemeral
     resolution_times:
+      +schema: int_zendesk
+      +catalog: intermediate
       +materialized: ephemeral
     sla_policy:
-      +schema: zendesk_intermediate
+      +schema: int_zendesk
+      +catalog: intermediate
       +materialized: ephemeral
     ticket_history:
-      +schema: zendesk_intermediate
+      +schema: int_zendesk
+      +catalog: intermediate
       +materialized: ephemeral
     utils:
+      +schema: int_zendesk
+      +catalog: intermediate
       +materialized: ephemeral
 vars:
   zendesk:
